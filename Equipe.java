@@ -7,6 +7,7 @@ public class Equipe {
     private List<Joueur> effectif;
     private String stade;
     private String entraîneur;
+    private int annee_de_naissance;
 
     // Constructeur
     public Equipe(String nom) {
