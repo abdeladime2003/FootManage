@@ -1,18 +1,18 @@
-package validation_inchallah;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 public class Equipe {
     private String nom;
     private List<Joueur> effectif;
     private String stade;
     private String entraîneur;
-    private int annee_de_naissance;
-
+    private LocalDate dateCreation;
     // Constructeur
-    public Equipe(String nom) {
+    public Equipe(String nom,String dateCreation) {
         this.nom = nom;
         this.effectif = new ArrayList<>();
+        this.dateCreation = LocalDate.parse(dateCreation, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     // Méthode pour ajouter un joueur à l'effectif de l'équipe
