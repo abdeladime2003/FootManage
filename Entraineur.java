@@ -1,47 +1,39 @@
 package com.ana.demo1;
-import java.util.*;
-class Joueur extends Personne {
-    private String poste;
-    private Map<String, Object> caracteristiques; // Map pour stocker les caractéristiques (incluant l'âge, la taille et le poids)
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+public class Entraineur extends Personne{
+
+    private int Age; // Map pour stocker les caractéristiques (incluant l'âge, la taille et le poids)
     private String nationalite; // Nationalité du joueur
     private Equipe equipeActuelle;
     private List<Equipe> equipesPrecedentes;
     private Map<Competition, Integer> palmares;
-    private int ValeurMarchande;
 
-    //Constructeur paramétré de la classe Joueur
-
-    public Joueur(String nom, String prenom, String poste, double taille, double poids, int age, String nationalite, Equipe equipe, int valeur) {
+    public Entraineur(String nom, String prenom, int age, String nationalite, Equipe equipe) {
         super(nom, prenom);
-        this.poste = poste;
-
-        // Initialisation du Map pour les caractéristiques
-        this.caracteristiques = new HashMap<>();
-        this.caracteristiques.put("taille", taille);
-        this.caracteristiques.put("poids", poids);
-        this.caracteristiques.put("age", age);
+        this.Age = age;
         this.nationalite = nationalite;
         this.equipeActuelle = equipe;
         this.equipesPrecedentes = new ArrayList<>();
         this.palmares = new HashMap<>();
-        this.ValeurMarchande = valeur;
+
+    }
+
+    public Entraineur(String nom, String prenom) {
+        super(nom, prenom);
     }
 
     // Getters et setters pour les attributs
-    public String getPoste() {
-        return poste;
+
+    public int getAge(){
+        return Age;
     }
 
-    public void setPoste(String poste) {
-        this.poste = poste;
-    }
-
-    public Map<String, Object> getCaracteristiques() {
-        return caracteristiques;
-    }
-
-    public void setCaracteristiques(Map<String, Object> caracteristiques) {
-        this.caracteristiques = caracteristiques;
+    public void setAge(int age){
+        this.Age = age;
     }
 
     public String getNationalite() {
@@ -75,12 +67,7 @@ class Joueur extends Personne {
     public void setPalmares(Map<Competition, Integer> palmares) {
         this.palmares = palmares;
     }
-    public int getValeurMarchande(){
-        return ValeurMarchande;
-    }
-    public void setValeurMarchande(int valeur){
-        this.ValeurMarchande = valeur;
-    }
+
 
     // Méthodes spécifiques pour gérer l'ajout des équipes précédentes et du palmarès
     public void ajouterEquipePrecedente(Equipe equipe) {
@@ -91,7 +78,4 @@ class Joueur extends Personne {
         int victoires = this.palmares.getOrDefault(competition, 0);
         this.palmares.put(competition, victoires + 1);
     }
-
-    // Autres méthodes spécifiques
-    // ...
 }
