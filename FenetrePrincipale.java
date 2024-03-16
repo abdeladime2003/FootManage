@@ -20,11 +20,8 @@ import javafx.stage.Stage;
 
 public class FenetrePrincipale extends Application {
 
-    private Stage primaryStage;
-
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
 
         Image backgroundImage = new Image("file:C:/Users/Lenovo/Desktop/my_app/joueur-football-masculin-ballon-terrain-herbe.jpg");
         BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
@@ -42,8 +39,8 @@ public class FenetrePrincipale extends Application {
         logInButton.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: white;");
         logInButton.setPrefSize(150, 50);
 
-        logInButton.setOnAction(e -> {
-            LoginWindow.display(primaryStage); // Passer primaryStage à la méthode display
+        logInButton.setOnAction(_ -> {
+            LoginWindow.display(primaryStage);
         });
 
         GridPane.setMargin(logInButton, new Insets(40, 0, 0, 0));

@@ -1,39 +1,36 @@
 package com.ana.demo1;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
-public class Entraineur extends Personne{
 
-    private int Age; // Map pour stocker les caractéristiques (incluant l'âge, la taille et le poids)
-    private String nationalite; // Nationalité du joueur
+public class Entraineur extends Personne implements Serializable {
+    private int age;
+    private String nationalite;
     private Equipe equipeActuelle;
     private List<Equipe> equipesPrecedentes;
     private Map<Competition, Integer> palmares;
 
     public Entraineur(String nom, String prenom, int age, String nationalite, Equipe equipe) {
         super(nom, prenom);
-        this.Age = age;
+        this.age = age;
         this.nationalite = nationalite;
         this.equipeActuelle = equipe;
         this.equipesPrecedentes = new ArrayList<>();
         this.palmares = new HashMap<>();
-
     }
 
     public Entraineur(String nom, String prenom) {
         super(nom, prenom);
     }
-
-    // Getters et setters pour les attributs
-
-    public int getAge(){
-        return Age;
+    public int getAge() {
+        return age;
     }
 
-    public void setAge(int age){
-        this.Age = age;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getNationalite() {
@@ -68,8 +65,6 @@ public class Entraineur extends Personne{
         this.palmares = palmares;
     }
 
-
-    // Méthodes spécifiques pour gérer l'ajout des équipes précédentes et du palmarès
     public void ajouterEquipePrecedente(Equipe equipe) {
         this.equipesPrecedentes.add(equipe);
     }

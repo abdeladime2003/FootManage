@@ -1,8 +1,9 @@
 package com.ana.demo1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
-public class Competition {
+public class Competition implements Serializable {
     public enum Niveau{
         Regional,
         National,
@@ -20,10 +21,10 @@ public class Competition {
     public String nomCompetition;
     public int nombreParticipants;
     public LocalDate dateCreation;
-    public TypeEquipe TypeEquipe;
-    public Systeme Systeme;
-    public Niveau Niveau;
-    public Map<String, Integer> historique;
+    public static TypeEquipe TypeEquipe;
+    public static Systeme Systeme;
+    public static Niveau Niveau;
+    public Map<String, String> historique;
 
     public Competition(String nomCompetition, int nombreParticipants, LocalDate dateCreation, String type, Niveau niveau, TypeEquipe typeEquipe, Systeme systeme) {
         this.nomCompetition = nomCompetition;
@@ -34,8 +35,6 @@ public class Competition {
         this.Niveau = niveau;
         this.historique = new HashMap<>();
     }
-
-    // Getters et setters
     public String getNomCompetition() {
         return nomCompetition;
     }
@@ -84,11 +83,11 @@ public class Competition {
         this.Niveau = niveau;
     }
 
-    public Map<String, Integer> getHistorique() {
+    public Map<String, String> getHistorique() {
         return historique;
     }
 
-    public void setHistorique(Map<String, Integer> Hist) {
+    public void setHistorique(Map<String, String> Hist) {
         this.historique = Hist;
     }
     public Map<String, String> miseAJourHistorique(Equipe equipeGagnante, int annee) {
@@ -97,13 +96,12 @@ public class Competition {
                 throw new IllegalArgumentException("L'année de la compétition ne peut pas être antérieure à l'année de création.");
             }
 
-            String nomEquipeGagnante = equipeGagnante.getNom(); // Supposons que getNom() retourne le nom de l'équipe
-
+            String nomEquipeGagnante = equipeGagnante.getNomCompétition();
             if (historique.containsKey(String.valueOf(annee))) {
                 throw new IllegalArgumentException("L'année spécifiée est déjà présente dans l'historique.");
             }
 
-            historique.put(String.valueOf(annee), Integer.valueOf(nomEquipeGagnante));
+            historique.put(String.valueOf(annee), nomEquipeGagnante);
         }
 
         return null;
