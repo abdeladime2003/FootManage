@@ -1,4 +1,3 @@
-// TransfertWindow.java
 package com.ana.demo1;
 
 import javafx.scene.Scene;
